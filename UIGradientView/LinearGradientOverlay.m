@@ -1,5 +1,5 @@
 //
-// GradientOverlay.m
+// LinearGradientOverlay.m
 //
 // Copyright (c) 2013 Angelo Rohit Joseph Pulikotil
 //
@@ -21,18 +21,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "GradientOverlay.h"
+#import "LinearGradientOverlay.h"
 
-@implementation GradientOverlay
-@synthesize gradientStops = _gradientStops;
+@implementation LinearGradientOverlay
+@synthesize direction = _direction;
 
-- (GradientOverlay *) init {
+- (LinearGradientOverlay *) init {
     return [self initWithGradientStops:nil];
 }
 
-- (GradientOverlay *) initWithGradientStops: (NSArray *)gradientStops {
-    if (self = [super init]) {
-        _gradientStops = gradientStops;
+- (LinearGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops {
+    if (self = [super initWithGradientStops:gradientStops]) {
+        _direction = LinearGradientDirection_Vertical;
     }
     
     return self;

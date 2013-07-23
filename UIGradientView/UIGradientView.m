@@ -22,8 +22,17 @@
 // THE SOFTWARE.
 
 #import "UIGradientView.h"
-#import "GradientOverlay.h"
+#import "LinearGradientOverlay.h"
+#import "RadialGradientOverlay.h"
 #import "GradientStop.h"
+
+@interface UIGradientView()
+
+- (void) drawLinearGradientOverlay: (const LinearGradientOverlay *)linearGradientOverlay withContext:(CGContextRef)currentContext gradient:(CGGradientRef)gradientRef;
+
+- (void) drawRadialGradientOverlay: (const RadialGradientOverlay *)radialGradientOverlay withContext:(CGContextRef)currentContext gradient:(CGGradientRef)gradientRef;
+
+@end
 
 @implementation UIGradientView
 
@@ -41,6 +50,53 @@
     }
 }
 
+
+- (void) drawLinearGradientOverlay: (const LinearGradientOverlay *)linearGradientOverlay withContext:(CGContextRef)context gradient:(CGGradientRef)gradientRef {
+    
+    // Calculate the start and end points based on the direction to be rendered.
+    CGPoint leftPos, rightPos;
+    switch (linearGradientOverlay.direction) {
+        case LinearGradientDirection_Vertical:
+            leftPos = CGPointMake(CGRectGetMidX(self.bounds), 0.0f);
+            rightPos = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMaxY(self.bounds));
+            break;
+        case LinearGradientDirection_Horizontal:
+            leftPos = CGPointMake(0.0f, CGRectGetMidY(self.bounds));
+            rightPos = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMidY(self.bounds));
+            break;
+        case LinearGradientDirection_TopLeftToBottomRight:
+            leftPos = CGPointMake(0.0f, 0.0f);
+            rightPos = CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMaxY(self.bounds));
+            break;
+        default:
+            leftPos = CGPointMake(CGRectGetMaxX(self.bounds), 0.0f);
+            rightPos = CGPointMake(0.0f, CGRectGetMaxY(self.bounds));
+            break;
+    }
+    
+    CGContextDrawLinearGradient(context, gradientRef, leftPos, rightPos, 0);
+}
+
+- (void) drawRadialGradientOverlay: (const RadialGradientOverlay *)radialGradientOverlay withContext:(CGContextRef)context gradient:(CGGradientRef)gradientRef {
+    
+    const CGPoint pos = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    
+    CGFloat fillRadius = radialGradientOverlay.radius;
+    if (fillRadius == RadialGradientOverlayOptions_FillOuter) {
+        fillRadius = sqrtf(self.bounds.size.width * self.bounds.size.width + self.bounds.size.height * self.bounds.size.height) * 0.5f;
+    }
+    else if (fillRadius == RadialGradientOverlayOptions_FillInner) {
+        if (self.bounds.size.height > self.bounds.size.width) {
+            fillRadius = self.bounds.size.width * 0.5f;
+        }
+        else {
+            fillRadius = self.bounds.size.height * 0.5f;
+        }
+    }    
+    
+    CGContextDrawRadialGradient(context, gradientRef, pos, 0, pos, fillRadius, 0);
+}
+
 #pragma mark View Overrides
 - (void)drawRect:(CGRect)rect
 {
@@ -48,13 +104,14 @@
         for (GradientOverlay * gradientOverlay in _gradientOverlays) {
             const NSArray * const gradientStops = gradientOverlay.gradientStops;
             if (gradientStops != nil) {
+                    
                 const NSUInteger noOfLocations = [gradientStops count];
                 CGFloat locations[noOfLocations];
                 CGFloat components[noOfLocations * 4];
                 
                 for (NSUInteger i = 0; i < noOfLocations; ++i) {
                     const GradientStop * const gradientStop =
-                                                        (GradientStop *)[gradientStops objectAtIndex:i];
+                    (GradientStop *)[gradientStops objectAtIndex:i];
                     locations[i] = gradientStop.offset * 0.01f;
                     
                     const CGFloat * colorComponents = CGColorGetComponents(gradientStop.color.CGColor);
@@ -70,34 +127,19 @@
                 
                 CGContextRef currentContext = UIGraphicsGetCurrentContext();
                 
-                const CGRect currentBounds = self.bounds;
-                
-                CGPoint leftPos, rightPos;
-                
-                // Calculate the start and end points based on the direction to be rendered.
-                switch (gradientOverlay.gradientDirection) {
-                    case GradientDirection_Vertical:
-                        leftPos = CGPointMake(CGRectGetMidX(currentBounds), 0.0f);
-                        rightPos = CGPointMake(CGRectGetMidX(currentBounds), CGRectGetMaxY(currentBounds));
-                        break;
-                    case GradientDirection_Horizontal:
-                        leftPos = CGPointMake(0.0f, CGRectGetMidY(currentBounds));
-                        rightPos = CGPointMake(CGRectGetMaxX(currentBounds), CGRectGetMidY(currentBounds));
-                        break;
-                    case GradientDirection_TopLeftToBottomRight:
-                        leftPos = CGPointMake(0.0f, 0.0f);
-                        rightPos = CGPointMake(CGRectGetMaxX(currentBounds), CGRectGetMaxY(currentBounds));
-                        break;
-                    default:
-                        leftPos = CGPointMake(CGRectGetMaxX(currentBounds), 0.0f);
-                        rightPos = CGPointMake(0.0f, CGRectGetMaxY(currentBounds));
-                        break;
+                if ([gradientOverlay isKindOfClass:[LinearGradientOverlay class]]) {
+                    
+                    LinearGradientOverlay * linearGradientOverlay = (LinearGradientOverlay *) gradientOverlay;
+                    [self drawLinearGradientOverlay: linearGradientOverlay withContext:currentContext gradient:gradientRef];
+                }
+                else if ([gradientOverlay isKindOfClass:[RadialGradientOverlay class]]) {
+                    RadialGradientOverlay * radialGradientOverlay = (RadialGradientOverlay *) gradientOverlay;
+                    
+                    [self drawRadialGradientOverlay: radialGradientOverlay withContext:currentContext gradient:gradientRef];
                 }
                 
-                CGContextDrawLinearGradient(currentContext, gradientRef, leftPos, rightPos, 0);
-                
                 CGGradientRelease(gradientRef);
-                CGColorSpaceRelease(rgbColorSpace);
+                CGColorSpaceRelease(rgbColorSpace);                
             }
         }
     }

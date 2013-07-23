@@ -1,5 +1,5 @@
 //
-// GradientOverlay.m
+// RadialGradientOverlay.h
 //
 // Copyright (c) 2013 Angelo Rohit Joseph Pulikotil
 //
@@ -20,19 +20,18 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+#import "RadialGradientOverlay.h"
 
-#import "GradientOverlay.h"
+@implementation RadialGradientOverlay
+@synthesize radius = _radius;
 
-@implementation GradientOverlay
-@synthesize gradientStops = _gradientStops;
-
-- (GradientOverlay *) init {
+- (RadialGradientOverlay *) init {
     return [self initWithGradientStops:nil];
 }
 
-- (GradientOverlay *) initWithGradientStops: (NSArray *)gradientStops {
-    if (self = [super init]) {
-        _gradientStops = gradientStops;
+- (RadialGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops {
+    if (self = [super initWithGradientStops:gradientStops]) {
+        _radius = RadialGradientOverlayOptions_FillOuter;
     }
     
     return self;

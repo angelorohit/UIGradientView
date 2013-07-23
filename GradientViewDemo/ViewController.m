@@ -8,12 +8,9 @@
 
 #import "ViewController.h"
 #import "UIGradientView.h"
-#import "GradientOverlay.h"
+#import "LinearGradientOverlay.h"
+#import "RadialGradientOverlay.h"
 #import "GradientStop.h"
-
-@interface ViewController ()
-
-@end
 
 @implementation ViewController
 
@@ -22,17 +19,17 @@
     
     // Add two gradient overlays to be rendered.
     
-    // First overlay is a gradient from green to yellow.
-    [gradientView addGradientOverlay:[[GradientOverlay alloc] initWithGradientStops:[[NSArray alloc] initWithObjects:
-                                                                                     [[GradientStop alloc] initWithColor:[UIColor colorWithRed:0.0f green:1.0f blue:0.0f alpha:0.5f] AndOffset:0],
-                                                                                     [[GradientStop alloc] initWithColor:[UIColor colorWithRed:1.0f green:1.0f blue:0.0f alpha:1.0f] AndOffset:100],
-                                                                                     nil]]];
+    // First overlay is a radial gradient from Green to Yellow.
+    [gradientView addGradientOverlay:[[RadialGradientOverlay alloc] initWithGradientStops:[[NSArray alloc] initWithObjects:
+                                                                                           [[GradientStop alloc] initWithColor:[UIColor greenColor] AndOffset:0],
+                                                                                           [[GradientStop alloc] initWithColor:[UIColor yellowColor] AndOffset:100],
+                                                                                           nil]]];
     
-    // Second overlay is a gradient from blue to transparent.
-    [gradientView addGradientOverlay:[[GradientOverlay alloc] initWithGradientStops:[[NSArray alloc] initWithObjects:
-                                                                                     [[GradientStop alloc] initWithColor:[UIColor colorWithRed:0.117f green:0.341f blue:0.6f alpha:1.0f] AndOffset:0],
-                                                                                     [[GradientStop alloc] initWithColor:[UIColor colorWithRed:0.16f green:0.537f blue:0.84f alpha:0.0f] AndOffset:100],
-                                                                                     nil]]];
+    // Second overlay is a linear gradient from blue to transparent.
+    [gradientView addGradientOverlay:[[LinearGradientOverlay alloc] initWithGradientStops:[[NSArray alloc] initWithObjects:
+                                                                                           [[GradientStop alloc] initWithColor:[UIColor colorWithRed:0.117f green:0.341f blue:0.6f alpha:1.0f] AndOffset:0],
+                                                                                           [[GradientStop alloc] initWithColor:[UIColor colorWithRed:0.16f green:0.537f blue:0.84f alpha:0.0f] AndOffset:100],
+                                                                                           nil]]];
 }
 
 - (void)viewDidLoad

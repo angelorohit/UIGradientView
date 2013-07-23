@@ -22,6 +22,8 @@
 		69A9CAED179C1599000AF970 /* GradientOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9CAE8179C1599000AF970 /* GradientOverlay.m */; };
 		69A9CAEE179C1599000AF970 /* GradientStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9CAEA179C1599000AF970 /* GradientStop.m */; };
 		69A9CAEF179C1599000AF970 /* UIGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9CAEC179C1599000AF970 /* UIGradientView.m */; };
+		69A9CAF2179C2929000AF970 /* LinearGradientOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9CAF1179C2929000AF970 /* LinearGradientOverlay.m */; };
+		69A9CAF5179C2EE6000AF970 /* RadialGradientOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9CAF4179C2EE5000AF970 /* RadialGradientOverlay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,10 @@
 		69A9CAEA179C1599000AF970 /* GradientStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientStop.m; sourceTree = "<group>"; };
 		69A9CAEB179C1599000AF970 /* UIGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIGradientView.h; sourceTree = "<group>"; };
 		69A9CAEC179C1599000AF970 /* UIGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIGradientView.m; sourceTree = "<group>"; };
+		69A9CAF0179C2929000AF970 /* LinearGradientOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearGradientOverlay.h; sourceTree = "<group>"; };
+		69A9CAF1179C2929000AF970 /* LinearGradientOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearGradientOverlay.m; sourceTree = "<group>"; };
+		69A9CAF3179C2EE5000AF970 /* RadialGradientOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialGradientOverlay.h; sourceTree = "<group>"; };
+		69A9CAF4179C2EE5000AF970 /* RadialGradientOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialGradientOverlay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,10 @@
 				69A9CAEA179C1599000AF970 /* GradientStop.m */,
 				69A9CAEB179C1599000AF970 /* UIGradientView.h */,
 				69A9CAEC179C1599000AF970 /* UIGradientView.m */,
+				69A9CAF0179C2929000AF970 /* LinearGradientOverlay.h */,
+				69A9CAF1179C2929000AF970 /* LinearGradientOverlay.m */,
+				69A9CAF3179C2EE5000AF970 /* RadialGradientOverlay.h */,
+				69A9CAF4179C2EE5000AF970 /* RadialGradientOverlay.m */,
 			);
 			path = UIGradientView;
 			sourceTree = SOURCE_ROOT;
@@ -206,6 +216,8 @@
 				69A9CAED179C1599000AF970 /* GradientOverlay.m in Sources */,
 				69A9CAEE179C1599000AF970 /* GradientStop.m in Sources */,
 				69A9CAEF179C1599000AF970 /* UIGradientView.m in Sources */,
+				69A9CAF2179C2929000AF970 /* LinearGradientOverlay.m in Sources */,
+				69A9CAF5179C2EE6000AF970 /* RadialGradientOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,7 +36,7 @@
 }
 
 - (GradientStop *) init {
-    return [self initWithColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f] AndOffset:0];
+    return [self initWithColor:[UIColor blackColor] AndOffset:0];
 }
 
 @end

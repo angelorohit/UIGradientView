@@ -26,7 +26,7 @@
 @class GradientOverlay;
 
 // A UIGradientView class is a subclass of UIView.
-// It provides support for rendering linear gradients
+// It provides support for rendering gradients
 // in its content area.
 @interface UIGradientView : UIView
 {
@@ -39,6 +39,5 @@
 
 // Clears all gradient overlays, so that new ones may be added.
 - (void) clearGradientOverlays;
-
 
 @end

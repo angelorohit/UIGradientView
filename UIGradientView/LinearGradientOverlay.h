@@ -1,5 +1,5 @@
 //
-// GradientOverlay.m
+// LinearGradientOverlay.h
 //
 // Copyright (c) 2013 Angelo Rohit Joseph Pulikotil
 //
@@ -23,19 +23,21 @@
 
 #import "GradientOverlay.h"
 
-@implementation GradientOverlay
-@synthesize gradientStops = _gradientStops;
+// The directions in which linear gradients can appear.
+typedef enum {
+    LinearGradientDirection_Vertical,
+    LinearGradientDirection_Horizontal,
+    LinearGradientDirection_TopLeftToBottomRight,
+    LinearGradientDirection_TopRightToBottomLeft
+} LinearGradientDirection;
 
-- (GradientOverlay *) init {
-    return [self initWithGradientStops:nil];
-}
+// LinearGradientOverlay is a subclass of GradientOverlay.
+// It can be used to render linear gradients as overlays in
+// a UIGradientView.
+@interface LinearGradientOverlay : GradientOverlay
 
-- (GradientOverlay *) initWithGradientStops: (NSArray *)gradientStops {
-    if (self = [super init]) {
-        _gradientStops = gradientStops;
-    }
-    
-    return self;
-}
+// The direction in which this LinearGradientOverlay will
+// be rendered.
+@property (nonatomic) LinearGradientDirection direction;
 
 @end

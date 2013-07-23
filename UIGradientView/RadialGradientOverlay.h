@@ -1,5 +1,5 @@
 //
-// GradientOverlay.m
+// RadialGradientOverlay.h
 //
 // Copyright (c) 2013 Angelo Rohit Joseph Pulikotil
 //
@@ -23,19 +23,21 @@
 
 #import "GradientOverlay.h"
 
-@implementation GradientOverlay
-@synthesize gradientStops = _gradientStops;
-
-- (GradientOverlay *) init {
-    return [self initWithGradientStops:nil];
-}
-
-- (GradientOverlay *) initWithGradientStops: (NSArray *)gradientStops {
-    if (self = [super init]) {
-        _gradientStops = gradientStops;
-    }
+typedef enum {
+    // The rendered radial gradient will completely fill
+    // the UIGRadientView
+    RadialGradientOverlayOptions_FillOuter = -1,
     
-    return self;
-}
+    // The rendered radial gradient will fit the inside
+    // of the UIGradientView.
+    RadialGradientOverlayOptions_FillInner = -2
+} RadialGradientOverlayOptions;
+
+// RadialGradientOverlay is a subclass of GradientOverlay.
+// It can be used to render radial gradients in a UIGradientView.
+@interface RadialGradientOverlay : GradientOverlay
+
+// The radius of the radial gradient.
+@property (nonatomic) NSInteger radius;
 
 @end

@@ -23,24 +23,13 @@
 
 #import <Foundation/Foundation.h>
 
-// The directions in which linear gradients can appear.
-typedef NS_ENUM(NSUInteger, GradientDirection) {
-    GradientDirection_Vertical,
-    GradientDirection_Horizontal,
-    GradientDirection_TopLeftToBottomRight,
-    GradientDirection_TopRightToBottomLeft
-};
-
 // GradientOverlay is a class that represents
 // the overlay of a Gradient in a UIGradientView.
 // There can be multiple overlays in a UIGradientView.
-// Each overlay specifies the GradientStops to be overlayed
-// as well the direction in which the gradient is to
-// be rendered.
+// Each overlay specifies the GradientStops to be rendered.
 @interface GradientOverlay : NSObject    
 
 @property (nonatomic, strong) NSArray * gradientStops;
-@property (nonatomic) GradientDirection gradientDirection;
 
 - (GradientOverlay *) initWithGradientStops: (NSArray *) gradientStops;
 
