@@ -42,4 +42,10 @@ typedef enum {
 // The radius of the radial gradient.
 @property (nonatomic) NSInteger radius;
 
+// Initializes this class with the given gradient stops and a default radius.
+- (RadialGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops;
+
+// Initializes this class with the given gradient stops and radius.
+- (RadialGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops AndRadius:(NSInteger)radius;
+
 @end

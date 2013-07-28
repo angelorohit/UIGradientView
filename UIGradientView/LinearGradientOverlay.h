@@ -41,4 +41,10 @@ typedef enum {
 // be rendered.
 @property (nonatomic) LinearGradientDirection direction;
 
+// Initializes this class with the given gradient stops and default direction.
+- (LinearGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops;
+
+// Initializes this class with the given gradient stops and direction.
+- (LinearGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops AndDirection:(LinearGradientDirection)direction;
+
 @end

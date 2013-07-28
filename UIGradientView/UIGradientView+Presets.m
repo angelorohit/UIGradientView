@@ -30,13 +30,19 @@
     
     if (dict != nil) {
         NSData * data = [dict objectForKey:presetName];
-        if (data != nil) {
-            NSArray * gradientOverlays = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-            
-            if (gradientOverlays != nil) {
-                [self setGradientOverlays:gradientOverlays];
-                return YES;
-            }
+        return [self loadPresetFromData:data];
+    }
+    
+    return NO;
+}
+
+- (BOOL) loadPresetFromData:(NSData *)data {
+    if (data != nil) {
+        NSArray * gradientOverlays = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        
+        if (gradientOverlays != nil) {
+            [self setGradientOverlays:gradientOverlays];
+            return YES;
         }
     }
     

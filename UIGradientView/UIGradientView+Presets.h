@@ -31,6 +31,10 @@
 // Returns YES if the load was successful and NO otherwise.
 - (BOOL) loadPreset:(NSString *)presetName fromFile:(NSString *)filename;
 
+// Loads a gradient preset from a given NSData object.
+// Return YES on success and NO otherwise.
+- (BOOL) loadPresetFromData:(NSData *)data;
+
 // Adds the existing gradient overlays in this UIGradientView to a plist file.
 // An existing entry in the plist file with the same presetName will be overwritten.
 // Returns YES on success and NO otherwise.
