@@ -30,7 +30,9 @@ typedef enum {
     
     // The rendered radial gradient will fit the inside
     // of the UIGradientView.
-    RadialGradientOverlayOptions_FillInner = -2
+    RadialGradientOverlayOptions_FillInner = -2,
+    
+    RadialGradientOverlayOptions_Max = -3
 } RadialGradientOverlayOptions;
 
 // RadialGradientOverlay is a subclass of GradientOverlay.

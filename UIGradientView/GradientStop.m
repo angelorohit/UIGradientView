@@ -23,20 +23,57 @@
 
 #import "GradientStop.h"
 
+// Constants for encoding and decoding data.
+static NSString * ArchiveKeyForColor = @"color";
+static NSString * ArchiveKeyForOffset = @"offset";
+
 @implementation GradientStop
 @synthesize color = _color, offset = _offset;
 
+#pragma mark - NSCoder implementations
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    UIColor * color = [aDecoder decodeObjectForKey:ArchiveKeyForColor];
+    NSUInteger offset = [aDecoder decodeIntForKey:ArchiveKeyForOffset];
+    
+    return [self initWithColor:color AndOffset:offset];
+}
+
+- (void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_color forKey:ArchiveKeyForColor];    
+    [aCoder encodeInt:_offset forKey:ArchiveKeyForOffset];
+}
+
+#pragma mark - Initializers
 - (GradientStop *) initWithColor: (UIColor *)color AndOffset:(NSUInteger)offset {
     if (self = [super init]) {
         self.color = color;
-        self.offset = offset;
+        self.offset = offset;        
     }
     
     return self;
 }
 
 - (GradientStop *) init {
-    return [self initWithColor:[UIColor blackColor] AndOffset:0];
+    return [self initWithColor:nil AndOffset:0];
+}
+
+#pragma mark - Getters / Setters
+- (void) setColor:(UIColor *)color {
+    if (color == nil) {
+        _color = [UIColor blackColor];
+    }
+    else {
+        _color = color;
+    }
+}
+
+- (void) setOffset:(NSUInteger)offset {
+    if (offset > 100) {
+        _offset = 100;
+    }
+    else {
+        _offset = offset;
+    }    
 }
 
 @end

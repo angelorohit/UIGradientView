@@ -25,7 +25,7 @@
 
 // A GradientStop class represents both color and an offset at which
 // the color is to be rendered in a gradient.
-@interface GradientStop : NSObject
+@interface GradientStop : NSObject <NSCoding>
 
     // Represents the color of this gradient stop.
     @property(nonatomic, strong) UIColor * color;
@@ -39,3 +39,4 @@
 - (GradientStop *) initWithColor: (UIColor *)color AndOffset:(NSUInteger)offset;
 
 @end
+

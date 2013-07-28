@@ -28,7 +28,8 @@ typedef enum {
     LinearGradientDirection_Vertical,
     LinearGradientDirection_Horizontal,
     LinearGradientDirection_TopLeftToBottomRight,
-    LinearGradientDirection_TopRightToBottomLeft
+    LinearGradientDirection_TopRightToBottomLeft,
+    LinearGradientDirection_Max
 } LinearGradientDirection;
 
 // LinearGradientOverlay is a subclass of GradientOverlay.

@@ -1,5 +1,5 @@
 //
-// GradientOverlay.h
+// UIGradientView+Presets.h
 //
 // Copyright (c) 2013 Angelo Rohit Joseph Pulikotil
 //
@@ -21,16 +21,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "UIGradientView.h"
 
-// GradientOverlay is a class that represents
-// the overlay of a Gradient in a UIGradientView.
-// There can be multiple overlays in a UIGradientView.
-// Each overlay specifies the GradientStops to be rendered.
-@interface GradientOverlay : NSObject<NSCoding>
+// A category of UIGradientView that includes
+// support for loading and saving of presets.
+@interface UIGradientView (Presets)
 
-@property (nonatomic, strong) NSArray * gradientStops;
+// Loads a gradient preset from the specified plist file.
+// Returns YES if the load was successful and NO otherwise.
+- (BOOL) loadPreset:(NSString *)presetName fromFile:(NSString *)filename;
 
-- (GradientOverlay *) initWithGradientStops: (NSArray *) gradientStops;
+// Adds the existing gradient overlays in this UIGradientView to a plist file.
+// An existing entry in the plist file with the same presetName will be overwritten.
+// Returns YES on success and NO otherwise.
+- (BOOL) addPreset:(NSString *)presetName toFile:(NSString *)filename;
 
 @end
