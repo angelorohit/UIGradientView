@@ -23,9 +23,23 @@
 
 #import "GradientOverlay.h"
 
+// Constants for encoding and decoding data.
+static NSString * ArchiveKeyForGradientStops = @"gradientstops";
+
 @implementation GradientOverlay
 @synthesize gradientStops = _gradientStops;
 
+#pragma mark - NSCoder implementations
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    NSArray * gradientStops = [aDecoder decodeObjectForKey:ArchiveKeyForGradientStops];
+    return [self initWithGradientStops:gradientStops];
+}
+
+- (void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:_gradientStops forKey:ArchiveKeyForGradientStops];    
+}
+
+#pragma mark - Initializers
 - (GradientOverlay *) init {
     return [self initWithGradientStops:nil];
 }

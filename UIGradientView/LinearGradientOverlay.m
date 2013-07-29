@@ -23,19 +23,52 @@
 
 #import "LinearGradientOverlay.h"
 
+// Constants for encoding and decoding data.
+static NSString * ArchiveKeyForDirection = @"direction";
+
 @implementation LinearGradientOverlay
 @synthesize direction = _direction;
 
+#pragma mark - NSCoder implementations
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        self.direction = [aDecoder decodeIntForKey:ArchiveKeyForDirection];
+    }
+    
+    return self;
+}
+
+- (void) encodeWithCoder:(NSCoder *)aCoder {
+    [super encodeWithCoder:aCoder];
+    
+    [aCoder encodeInt:_direction forKey:ArchiveKeyForDirection];
+}
+
+#pragma mark - Initializers
 - (LinearGradientOverlay *) init {
     return [self initWithGradientStops:nil];
 }
 
 - (LinearGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops {
+    return [self initWithGradientStops:gradientStops AndDirection:LinearGradientDirection_Vertical];
+}
+
+- (LinearGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops AndDirection:(LinearGradientDirection)direction {
     if (self = [super initWithGradientStops:gradientStops]) {
-        _direction = LinearGradientDirection_Vertical;
+        self.direction = direction;
     }
     
     return self;
+}
+
+#pragma mark - Getters / Setters
+- (void) setDirection:(LinearGradientDirection)direction {
+    if (direction >= LinearGradientDirection_Max) {
+        _direction = LinearGradientDirection_Vertical;
+    }
+    else {
+        _direction = direction;
+    }
 }
 
 @end

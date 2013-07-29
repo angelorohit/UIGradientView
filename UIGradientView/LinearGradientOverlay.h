@@ -28,7 +28,8 @@ typedef enum {
     LinearGradientDirection_Vertical,
     LinearGradientDirection_Horizontal,
     LinearGradientDirection_TopLeftToBottomRight,
-    LinearGradientDirection_TopRightToBottomLeft
+    LinearGradientDirection_TopRightToBottomLeft,
+    LinearGradientDirection_Max
 } LinearGradientDirection;
 
 // LinearGradientOverlay is a subclass of GradientOverlay.
@@ -39,5 +40,11 @@ typedef enum {
 // The direction in which this LinearGradientOverlay will
 // be rendered.
 @property (nonatomic) LinearGradientDirection direction;
+
+// Initializes this class with the given gradient stops and default direction.
+- (LinearGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops;
+
+// Initializes this class with the given gradient stops and direction.
+- (LinearGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops AndDirection:(LinearGradientDirection)direction;
 
 @end

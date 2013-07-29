@@ -34,6 +34,9 @@
     NSMutableArray * _gradientOverlays;
 }
 
+// Sets an array of GradientOverlay to be rendered.
+- (void) setGradientOverlays: (NSArray *) gradientOverlays;
+
 // Adds a GradientOverlay to be rendered.
 - (void) addGradientOverlay: (GradientOverlay *) gradientOverlay;
 

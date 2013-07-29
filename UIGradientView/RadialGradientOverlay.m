@@ -22,19 +22,52 @@
 // THE SOFTWARE.
 #import "RadialGradientOverlay.h"
 
+// Constants for encoding and decoding data.
+static NSString * ArchiveKeyForRadius = @"radius";
+
 @implementation RadialGradientOverlay
 @synthesize radius = _radius;
 
+#pragma mark - NSCoder implementations
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        self.radius = [aDecoder decodeIntForKey:ArchiveKeyForRadius];
+    }
+    
+    return self;
+}
+
+- (void) encodeWithCoder:(NSCoder *)aCoder {
+    [super encodeWithCoder:aCoder];
+    
+    [aCoder encodeInt:_radius forKey:ArchiveKeyForRadius];
+}
+
+#pragma mark - Initializers
 - (RadialGradientOverlay *) init {
     return [self initWithGradientStops:nil];
 }
 
 - (RadialGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops {
+    return [self initWithGradientStops:gradientStops AndRadius:RadialGradientOverlayOptions_FillOuter];
+}
+
+- (RadialGradientOverlay *) initWithGradientStops: (NSArray *)gradientStops AndRadius:(NSInteger)radius {
     if (self = [super initWithGradientStops:gradientStops]) {
-        _radius = RadialGradientOverlayOptions_FillOuter;
+        self.radius = radius;
     }
     
     return self;
+}
+
+#pragma mark - Getters / Setters
+- (void) setRadius:(NSInteger)radius {
+    if (radius <= RadialGradientOverlayOptions_Max) {
+        _radius = RadialGradientOverlayOptions_FillOuter;
+    }
+    else {
+        _radius = radius;
+    }
 }
 
 @end
