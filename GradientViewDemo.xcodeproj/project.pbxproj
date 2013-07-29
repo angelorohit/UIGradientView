@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6931377C17A4D75700AA9AE3 /* UIGradientView+Presets.m in Sources */ = {isa = PBXBuildFile; fileRef = 6931377B17A4D75700AA9AE3 /* UIGradientView+Presets.m */; };
 		693A1D8D179C00210044D355 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693A1D8C179C00210044D355 /* UIKit.framework */; };
 		693A1D8F179C00210044D355 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693A1D8E179C00210044D355 /* Foundation.framework */; };
 		693A1D91179C00210044D355 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 693A1D90179C00210044D355 /* CoreGraphics.framework */; };
@@ -18,6 +19,7 @@
 		693A1DA3179C00220044D355 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 693A1DA2179C00220044D355 /* Default-568h@2x.png */; };
 		693A1DA6179C00220044D355 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 693A1DA5179C00220044D355 /* ViewController.m */; };
 		693A1DAC179C00220044D355 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 693A1DAA179C00220044D355 /* ViewController_iPad.xib */; };
+		693E5EAA179FFA0800417592 /* Gradient-Presets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 693E5EA9179FFA0800417592 /* Gradient-Presets.plist */; };
 		69A9CAB8179C10E9000AF970 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 693A1DA7179C00220044D355 /* ViewController_iPhone.xib */; };
 		69A9CAED179C1599000AF970 /* GradientOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9CAE8179C1599000AF970 /* GradientOverlay.m */; };
 		69A9CAEE179C1599000AF970 /* GradientStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A9CAEA179C1599000AF970 /* GradientStop.m */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6931377A17A4D75700AA9AE3 /* UIGradientView+Presets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGradientView+Presets.h"; sourceTree = "<group>"; };
+		6931377B17A4D75700AA9AE3 /* UIGradientView+Presets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGradientView+Presets.m"; sourceTree = "<group>"; };
 		693A1D89179C00210044D355 /* GradientViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GradientViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		693A1D8C179C00210044D355 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		693A1D8E179C00210044D355 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,6 +48,7 @@
 		693A1DA5179C00220044D355 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		693A1DA8179C00220044D355 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		693A1DAB179C00220044D355 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		693E5EA9179FFA0800417592 /* Gradient-Presets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Gradient-Presets.plist"; sourceTree = "<group>"; };
 		69A9CAE7179C1599000AF970 /* GradientOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientOverlay.h; sourceTree = "<group>"; };
 		69A9CAE8179C1599000AF970 /* GradientOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientOverlay.m; sourceTree = "<group>"; };
 		69A9CAE9179C1599000AF970 /* GradientStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientStop.h; sourceTree = "<group>"; };
@@ -139,6 +144,9 @@
 				69A9CAF1179C2929000AF970 /* LinearGradientOverlay.m */,
 				69A9CAF3179C2EE5000AF970 /* RadialGradientOverlay.h */,
 				69A9CAF4179C2EE5000AF970 /* RadialGradientOverlay.m */,
+				6931377A17A4D75700AA9AE3 /* UIGradientView+Presets.h */,
+				6931377B17A4D75700AA9AE3 /* UIGradientView+Presets.m */,
+				693E5EA9179FFA0800417592 /* Gradient-Presets.plist */,
 			);
 			path = UIGradientView;
 			sourceTree = SOURCE_ROOT;
@@ -200,6 +208,7 @@
 				693A1DA1179C00210044D355 /* Default@2x.png in Resources */,
 				693A1DA3179C00220044D355 /* Default-568h@2x.png in Resources */,
 				693A1DAC179C00220044D355 /* ViewController_iPad.xib in Resources */,
+				693E5EAA179FFA0800417592 /* Gradient-Presets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +227,7 @@
 				69A9CAEF179C1599000AF970 /* UIGradientView.m in Sources */,
 				69A9CAF2179C2929000AF970 /* LinearGradientOverlay.m in Sources */,
 				69A9CAF5179C2EE6000AF970 /* RadialGradientOverlay.m in Sources */,
+				6931377C17A4D75700AA9AE3 /* UIGradientView+Presets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

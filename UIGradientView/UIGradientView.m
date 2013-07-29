@@ -36,6 +36,14 @@
 
 @implementation UIGradientView
 
+- (void) setGradientOverlays: (NSArray *) gradientOverlays {
+    [self clearGradientOverlays];
+    
+    for (GradientOverlay * gradientOverlay in gradientOverlays) {
+        [self addGradientOverlay:gradientOverlay];
+    }
+}
+
 - (void) addGradientOverlay: (GradientOverlay *) gradientOverlay {
     if (_gradientOverlays == nil) {
         _gradientOverlays = [[NSMutableArray alloc] init];
@@ -50,7 +58,7 @@
     }
 }
 
-
+#pragma mark - Private methods
 - (void) drawLinearGradientOverlay: (const LinearGradientOverlay *)linearGradientOverlay withContext:(CGContextRef)context gradient:(CGGradientRef)gradientRef {
     
     // Calculate the start and end points based on the direction to be rendered.
@@ -97,7 +105,7 @@
     CGContextDrawRadialGradient(context, gradientRef, pos, 0, pos, fillRadius, 0);
 }
 
-#pragma mark View Overrides
+#pragma mark - View Overrides
 - (void)drawRect:(CGRect)rect
 {
     if (_gradientOverlays != nil) {
