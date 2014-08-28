@@ -29,3 +29,5 @@ The project comes with a default set of gradient presets that can be loaded via 
 - UIGradientView+Presets.h
 - UIGradientView+Presets.m
 - Gradient-Presets.plist.
+
+![Preview image](http://2.bp.blogspot.com/-uW3eHSh6DZ0/UfZ4mDGoa4I/AAAAAAAAAmc/nC9QT6-vOjw/s1600/Screen+Shot+2013-07-29+at+10.07.59+PM.png)
