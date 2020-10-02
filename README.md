@@ -23,7 +23,7 @@ rendered to fill the view by default.
 [UIGradientView](UIGradientView/UIGradientView.h) is a subclass of UIView. It renders one or more Gradient overlays in its content area.
 See [ViewController.m](GradientViewDemo/ViewController.m) in the demo project to understand how a UIGradientView may be setup and used.
 
-###Presets
+### Presets
 The project comes with a default set of gradient presets that can be loaded via the UIGradientView(Presets) category class. If you don't wish to use any of the presets, simply exclude the following files from your project:
 
 - UIGradientView+Presets.h
